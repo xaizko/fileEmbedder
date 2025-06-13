@@ -24,5 +24,13 @@ typedef unsigned _BitInt(128) int128;
 #define $c (char *)
 #define $i (int)
 
+
+enum e_language {
+    c = 0,
+    asm = 1
+};
+typedef enum e_language language;
+
 int main(int,char**);
 void usage(char *arg);
+void printHeader(char *identifier, language lang);

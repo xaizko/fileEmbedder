@@ -1,14 +1,10 @@
 /* fileEmbedder.c */
 #include "fileEmbedder.h"
 
-void usage(char *arg) {
-    fprintf(stderr, "Usage: %s [-h | --help | -a] <identifier>\n", arg);
-    exit(-1);
-}
 
 int main(int argc, char *argv[]) {
-    bool asm = false;
     char *identifier = NULL;
+    language lang = c;
 
     // Check if we don't have enough arguments
     if (argc < 2) {
@@ -26,7 +22,7 @@ int main(int argc, char *argv[]) {
     } else if (argc == 3) {
         // Check for assembly flag
         if (strcmp(argv[1], "-a") == 0) {
-            asm = true;
+            lang = asm;
             identifier = argv[2];
         } else {
             usage(argv[0]);
@@ -36,10 +32,23 @@ int main(int argc, char *argv[]) {
         usage(argv[0]);
     }
 
-    printf("asm = \t%s\n"
-           "identifier = '%s'\n",
-           (asm) ? "true" : "false",
-           identifier);
+    printHeader(identifier, lang);
 
     return 0;
+}
+
+void usage(char *arg) {
+    fprintf(stderr, "Usage: %s [-h | --help | -a] <identifier>\n", arg);
+    exit(-1);
+}
+
+void printHeader(char *identifier, language lang) {
+    switch (lang) {
+	case asm:
+	    printf("%s:\n", identifier);
+	    break;
+	default:
+	    printf("unsigned char %s[] =\n", identifier);
+	    break; 
+    }
 }
