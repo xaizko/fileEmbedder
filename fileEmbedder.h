@@ -8,6 +8,7 @@
 #include <assert.h>
 #include <errno.h>
 #include <birchutils.h>
+#include <string.h>
 
 typedef unsigned char int8;
 typedef unsigned short int int16;
@@ -24,3 +25,4 @@ typedef unsigned _BitInt(128) int128;
 #define $i (int)
 
 int main(int,char**);
+void usage(char *arg);
