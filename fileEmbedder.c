@@ -33,6 +33,7 @@ int main(int argc, char *argv[]) {
     }
 
     printHeader(identifier, lang);
+    printBody(lang);
 
     return 0;
 }
@@ -50,5 +51,20 @@ void printHeader(char *identifier, language lang) {
 	default:
 	    printf("unsigned char %s[] =\n", identifier);
 	    break; 
+    }
+}
+
+void printBody(language lang) {
+    int32 n;
+    signed int ret;
+    char buf[2];
+    char *c;
+
+    *buf= *(buf+1) = 0;
+
+    while ( (ret = read(0, $c buf, 1)) == 1 ) {
+	n++;
+	c = convert(*buf, lang);
+	assert(c);
     }
 }
