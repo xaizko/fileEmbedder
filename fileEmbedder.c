@@ -62,7 +62,7 @@ void printBody(language lang) {
 
     *buf= *(buf+1) = 0;
 
-    while ( (ret = read(0, $c buf, 1)) == 1 ) {
+    while ( (ret = read(0, char *buf, 1)) == 1 ) {
 	n++;
 	c = convert(*buf, lang);
 	assert(c);
