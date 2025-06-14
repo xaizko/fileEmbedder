@@ -35,3 +35,5 @@ int main(int,char**);
 void usage(char *arg);
 void printHeader(char *identifier, language lang);
 void printBody(language lang);
+char *convert(char, language);
+
