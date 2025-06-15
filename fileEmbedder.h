@@ -27,7 +27,7 @@ typedef unsigned _BitInt(128) int128;
 
 enum e_language {
     c = 0,
-    asm = 1
+    assembly = 1
 };
 typedef enum e_language language;
 
@@ -35,5 +35,5 @@ int main(int,char**);
 void usage(char *arg);
 void printHeader(char *identifier, language lang);
 void printBody(language lang);
-char *convert(char, language);
+char *convert(char ch, language lang);
 
